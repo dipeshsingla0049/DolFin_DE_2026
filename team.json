@@ -1,10 +1,20 @@
 {
-    "TeamId" : "T0019",
-    "Members" : [
-        {"name":"Harsh Goyal","id":"2501010179","github":"goyalharsh60","section":"B","lead":true},
-        {"name":"Dipesh Singla","id":"2501010147","github":"dipeshsingla0049","section":"B"},
-        {"name":"Darsh Bansal","id":"2501010131","github":"Darsh-Bansal","section":"B"},
-        {"name":"Vishaldeep","id":"2501010514","github":"vishalmujaidia","section":"D"}
-    ],
-    "Repo-URL":" https://github.com/goyalharsh60/DolFin_DE_2026"
+  "team_number": "T0019",
+  "group_lead": { "name": "Harsh Goyal", "enrollment_no": "2501010179", "github": "goyalharsh60" },
+  "members": [
+    { "name": "Dipesh Singla", "enrollment_no": "2501010147", "github": "dipeshsingla0049" },
+    { "name": "Darsh Bansal", "enrollment_no": "2501010131", "github": "Darsh-Bansal" },
+    { "name": "Vishaldeep", "enrollment_no": "2501010514", "github": "vishalmujaidia" }
+  ],
+  "postgres_version": "16",
+  "laptop_used_for_benchmarks": "Not a laptop: all benchmark timings were run in a cloud Linux container, 2 vCPU / 8 GB RAM, PostgreSQL 16.15",
+
+  "TeamId": "T0019",
+  "Members": [
+    {"name":"Harsh Goyal","id":"2501010179","github":"goyalharsh60","section":"B","lead":true},
+    {"name":"Dipesh Singla","id":"2501010147","github":"dipeshsingla0049","section":"B"},
+    {"name":"Darsh Bansal","id":"2501010131","github":"Darsh-Bansal","section":"B"},
+    {"name":"Vishaldeep","id":"2501010514","github":"vishalmujaidia","section":"D"}
+  ],
+  "Repo-URL": "https://github.com/goyalharsh60/DolFin_DE_2026"
 }
