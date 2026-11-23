@@ -13,7 +13,7 @@
 --     status inside 6 indexes (key, INCLUDE, partial)        302 ms   <- rejected
 --     no status in any index, fillfactor 100           479 ms   (no room on the page, so not HOT)
 --     no status in any index, fillfactor 90            201 ms
---     no status in any index, fillfactor 80  (FINAL)    79 ms
+--     no status in any index, fillfactor 80  (FINAL)    89 ms
 -- Raw plans: benchmarks/results/optimized/experiments/ and .../optimized/W04.txt
 -- Searches therefore check status on the few rows the index already found, which is cheap.
 -- =====================================================================
