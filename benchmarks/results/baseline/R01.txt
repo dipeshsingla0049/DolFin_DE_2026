@@ -1,0 +1,84 @@
+=== R01 run 1 ===
+Gather Merge  (cost=4814.18..4815.22 rows=9 width=32) (actual time=13.047..15.078 rows=25 loops=1)
+  Workers Planned: 1
+  Workers Launched: 1
+  Buffers: shared hit=2308
+  ->  Sort  (cost=3814.17..3814.19 rows=9 width=32) (actual time=10.856..10.859 rows=12 loops=2)
+        Sort Key: p.price
+        Sort Method: quicksort  Memory: 26kB
+        Buffers: shared hit=2308
+        Worker 0:  Sort Method: quicksort  Memory: 25kB
+        ->  Hash Join  (cost=2.51..3814.03 rows=9 width=32) (actual time=1.190..10.801 rows=12 loops=2)
+              Hash Cond: (p.locality_id = l.locality_id)
+              Buffers: shared hit=2272
+              ->  Parallel Seq Scan on properties p  (cost=0.00..3809.03 rows=909 width=34) (actual time=0.027..10.599 rows=1712 loops=2)
+                    Filter: ((price <= '40000'::numeric) AND ((furnishing)::text = ANY ('{SEMI_FURNISHED,FULLY_FURNISHED}'::text[])) AND ((listing_type)::text = 'RENT'::text) AND ((status)::text = 'ACTIVE'::text) AND (bhk = 2))
+                    Rows Removed by Filter: 58318
+                    Buffers: shared hit=2223
+              ->  Hash  (cost=2.50..2.50 rows=1 width=2) (actual time=0.019..0.020 rows=1 loops=2)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=2
+                    ->  Seq Scan on localities l  (cost=0.00..2.50 rows=1 width=2) (actual time=0.006..0.011 rows=1 loops=2)
+                          Filter: (((locality_name)::text = 'Koramangala'::text) AND (city_id = 1))
+                          Rows Removed by Filter: 99
+                          Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=315
+Planning Time: 0.532 ms
+Execution Time: 15.116 ms
+=== R01 run 2 ===
+Gather Merge  (cost=4814.18..4815.22 rows=9 width=32) (actual time=12.499..13.736 rows=25 loops=1)
+  Workers Planned: 1
+  Workers Launched: 1
+  Buffers: shared hit=2308
+  ->  Sort  (cost=3814.17..3814.19 rows=9 width=32) (actual time=11.132..11.135 rows=12 loops=2)
+        Sort Key: p.price
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=2308
+        Worker 0:  Sort Method: quicksort  Memory: 25kB
+        ->  Hash Join  (cost=2.51..3814.03 rows=9 width=32) (actual time=1.441..11.093 rows=12 loops=2)
+              Hash Cond: (p.locality_id = l.locality_id)
+              Buffers: shared hit=2272
+              ->  Parallel Seq Scan on properties p  (cost=0.00..3809.03 rows=909 width=34) (actual time=0.031..10.909 rows=1712 loops=2)
+                    Filter: ((price <= '40000'::numeric) AND ((furnishing)::text = ANY ('{SEMI_FURNISHED,FULLY_FURNISHED}'::text[])) AND ((listing_type)::text = 'RENT'::text) AND ((status)::text = 'ACTIVE'::text) AND (bhk = 2))
+                    Rows Removed by Filter: 58318
+                    Buffers: shared hit=2223
+              ->  Hash  (cost=2.50..2.50 rows=1 width=2) (actual time=0.016..0.017 rows=1 loops=2)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=2
+                    ->  Seq Scan on localities l  (cost=0.00..2.50 rows=1 width=2) (actual time=0.004..0.009 rows=1 loops=2)
+                          Filter: (((locality_name)::text = 'Koramangala'::text) AND (city_id = 1))
+                          Rows Removed by Filter: 99
+                          Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=323
+Planning Time: 0.734 ms
+Execution Time: 13.787 ms
+=== R01 run 3 ===
+Gather Merge  (cost=4814.18..4815.22 rows=9 width=32) (actual time=12.301..14.173 rows=25 loops=1)
+  Workers Planned: 1
+  Workers Launched: 1
+  Buffers: shared hit=2308
+  ->  Sort  (cost=3814.17..3814.19 rows=9 width=32) (actual time=10.740..10.743 rows=12 loops=2)
+        Sort Key: p.price
+        Sort Method: quicksort  Memory: 26kB
+        Buffers: shared hit=2308
+        Worker 0:  Sort Method: quicksort  Memory: 25kB
+        ->  Hash Join  (cost=2.51..3814.03 rows=9 width=32) (actual time=1.141..10.691 rows=12 loops=2)
+              Hash Cond: (p.locality_id = l.locality_id)
+              Buffers: shared hit=2272
+              ->  Parallel Seq Scan on properties p  (cost=0.00..3809.03 rows=909 width=34) (actual time=0.028..10.500 rows=1712 loops=2)
+                    Filter: ((price <= '40000'::numeric) AND ((furnishing)::text = ANY ('{SEMI_FURNISHED,FULLY_FURNISHED}'::text[])) AND ((listing_type)::text = 'RENT'::text) AND ((status)::text = 'ACTIVE'::text) AND (bhk = 2))
+                    Rows Removed by Filter: 58318
+                    Buffers: shared hit=2223
+              ->  Hash  (cost=2.50..2.50 rows=1 width=2) (actual time=0.018..0.019 rows=1 loops=2)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=2
+                    ->  Seq Scan on localities l  (cost=0.00..2.50 rows=1 width=2) (actual time=0.006..0.011 rows=1 loops=2)
+                          Filter: (((locality_name)::text = 'Koramangala'::text) AND (city_id = 1))
+                          Rows Removed by Filter: 99
+                          Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=323
+Planning Time: 0.533 ms
+Execution Time: 14.216 ms

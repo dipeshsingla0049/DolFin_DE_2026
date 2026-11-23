@@ -1,0 +1,27 @@
+-- totals
+ new_indexes_total 
+-------------------
+ 
+(1 row)
+
+ database_size 
+---------------
+ 55 MB
+(1 row)
+
+      relname      |   table    | all_indexes 
+-------------------+------------+-------------
+ properties        | 17 MB      | 2640 kB
+ enquiries         | 6944 kB    | 2208 kB
+ users             | 3592 kB    | 4280 kB
+ shortlists        | 3032 kB    | 1552 kB
+ site_visits       | 2312 kB    | 784 kB
+ price_changes     | 1384 kB    | 528 kB
+ project_amenities | 248 kB     | 168 kB
+ projects          | 120 kB     | 120 kB
+ builders          | 16 kB      | 32 kB
+ amenities         | 8192 bytes | 32 kB
+ localities        | 8192 bytes | 32 kB
+ cities            | 8192 bytes | 32 kB
+(12 rows)
+

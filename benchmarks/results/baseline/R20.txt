@@ -1,0 +1,54 @@
+=== R20 run 1 ===
+WindowAgg  (cost=4650.39..4671.39 rows=600 width=44) (actual time=22.486..23.147 rows=30 loops=1)
+  Buffers: shared hit=2223
+  ->  GroupAggregate  (cost=4650.39..4662.39 rows=600 width=12) (actual time=22.443..23.112 rows=30 loops=1)
+        Group Key: ((properties.posted_at)::date)
+        Buffers: shared hit=2223
+        ->  Sort  (cost=4650.39..4651.89 rows=600 width=4) (actual time=22.391..22.676 rows=6550 loops=1)
+              Sort Key: ((properties.posted_at)::date)
+              Sort Method: quicksort  Memory: 193kB
+              Buffers: shared hit=2223
+              ->  Seq Scan on properties  (cost=0.00..4622.70 rows=600 width=4) (actual time=19.882..21.902 rows=6550 loops=1)
+                    Filter: (((posted_at)::date >= '2026-06-01'::date) AND ((posted_at)::date <= '2026-06-30'::date))
+                    Rows Removed by Filter: 113510
+                    Buffers: shared hit=2220
+Planning:
+  Buffers: shared hit=77
+Planning Time: 0.387 ms
+Execution Time: 23.229 ms
+=== R20 run 2 ===
+WindowAgg  (cost=4650.39..4671.39 rows=600 width=44) (actual time=22.557..23.107 rows=30 loops=1)
+  Buffers: shared hit=2223
+  ->  GroupAggregate  (cost=4650.39..4662.39 rows=600 width=12) (actual time=22.516..23.072 rows=30 loops=1)
+        Group Key: ((properties.posted_at)::date)
+        Buffers: shared hit=2223
+        ->  Sort  (cost=4650.39..4651.89 rows=600 width=4) (actual time=22.474..22.704 rows=6550 loops=1)
+              Sort Key: ((properties.posted_at)::date)
+              Sort Method: quicksort  Memory: 193kB
+              Buffers: shared hit=2223
+              ->  Seq Scan on properties  (cost=0.00..4622.70 rows=600 width=4) (actual time=20.187..22.050 rows=6550 loops=1)
+                    Filter: (((posted_at)::date >= '2026-06-01'::date) AND ((posted_at)::date <= '2026-06-30'::date))
+                    Rows Removed by Filter: 113510
+                    Buffers: shared hit=2220
+Planning:
+  Buffers: shared hit=77
+Planning Time: 0.378 ms
+Execution Time: 23.190 ms
+=== R20 run 3 ===
+WindowAgg  (cost=4650.39..4671.39 rows=600 width=44) (actual time=27.012..27.694 rows=30 loops=1)
+  Buffers: shared hit=2223
+  ->  GroupAggregate  (cost=4650.39..4662.39 rows=600 width=12) (actual time=26.965..27.650 rows=30 loops=1)
+        Group Key: ((properties.posted_at)::date)
+        Buffers: shared hit=2223
+        ->  Sort  (cost=4650.39..4651.89 rows=600 width=4) (actual time=26.929..27.235 rows=6550 loops=1)
+              Sort Key: ((properties.posted_at)::date)
+              Sort Method: quicksort  Memory: 193kB
+              Buffers: shared hit=2223
+              ->  Seq Scan on properties  (cost=0.00..4622.70 rows=600 width=4) (actual time=23.796..26.370 rows=6550 loops=1)
+                    Filter: (((posted_at)::date >= '2026-06-01'::date) AND ((posted_at)::date <= '2026-06-30'::date))
+                    Rows Removed by Filter: 113510
+                    Buffers: shared hit=2220
+Planning:
+  Buffers: shared hit=77
+Planning Time: 0.423 ms
+Execution Time: 27.780 ms

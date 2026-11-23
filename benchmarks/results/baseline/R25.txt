@@ -1,0 +1,99 @@
+=== R25 run 1 ===
+GroupAggregate  (cost=4921.49..165869528.33 rows=10 width=18) (actual time=351.868..895.797 rows=10 loops=1)
+  Group Key: l.city_id
+  Buffers: shared hit=3469
+  ->  Nested Loop  (cost=4921.49..111371.24 rows=69999 width=10) (actual time=212.720..824.235 rows=69999 loops=1)
+        Join Filter: (l.locality_id = p.locality_id)
+        Rows Removed by Join Filter: 6929901
+        Buffers: shared hit=2601
+        ->  Index Scan using uq_localities_city_name on localities l  (cost=0.14..13.64 rows=100 width=4) (actual time=0.009..0.285 rows=100 loops=1)
+              Buffers: shared hit=2
+        ->  Materialize  (cost=4921.35..6534.09 rows=69999 width=10) (actual time=2.125..5.102 rows=69999 loops=100)
+              Buffers: shared hit=2599
+              ->  Hash Join  (cost=4921.35..6184.10 rows=69999 width=10) (actual time=212.484..239.650 rows=69999 loops=1)
+                    Hash Cond: (s.property_id = p.property_id)
+                    Buffers: shared hit=2599
+                    ->  Seq Scan on shortlists s  (cost=0.00..1078.99 rows=69999 width=8) (actual time=0.012..3.619 rows=69999 loops=1)
+                          Buffers: shared hit=379
+                    ->  Hash  (cost=3420.60..3420.60 rows=120060 width=6) (actual time=211.947..211.950 rows=120060 loops=1)
+                          Buckets: 131072  Batches: 1  Memory Usage: 5480kB
+                          Buffers: shared hit=2220
+                          ->  Seq Scan on properties p  (cost=0.00..3420.60 rows=120060 width=6) (actual time=184.614..195.721 rows=120060 loops=1)
+                                Buffers: shared hit=2220
+  SubPlan 2
+    ->  Seq Scan on enquiries e  (cost=0.00..1868.00 rows=100000 width=8) (actual time=12.116..19.396 rows=100000 loops=1)
+          Buffers: shared hit=868
+Planning:
+  Buffers: shared hit=313
+Planning Time: 0.838 ms
+JIT:
+  Functions: 29
+  Options: Inlining true, Optimization true, Expressions true, Deforming true
+  Timing: Generation 1.023 ms, Inlining 55.881 ms, Optimization 87.503 ms, Emission 60.648 ms, Total 205.054 ms
+Execution Time: 911.930 ms
+=== R25 run 2 ===
+GroupAggregate  (cost=4921.49..165869528.33 rows=10 width=18) (actual time=360.957..868.983 rows=10 loops=1)
+  Group Key: l.city_id
+  Buffers: shared hit=3469
+  ->  Nested Loop  (cost=4921.49..111371.24 rows=69999 width=10) (actual time=196.197..784.250 rows=69999 loops=1)
+        Join Filter: (l.locality_id = p.locality_id)
+        Rows Removed by Join Filter: 6929901
+        Buffers: shared hit=2601
+        ->  Index Scan using uq_localities_city_name on localities l  (cost=0.14..13.64 rows=100 width=4) (actual time=0.009..0.334 rows=100 loops=1)
+              Buffers: shared hit=2
+        ->  Materialize  (cost=4921.35..6534.09 rows=69999 width=10) (actual time=1.960..4.879 rows=69999 loops=100)
+              Buffers: shared hit=2599
+              ->  Hash Join  (cost=4921.35..6184.10 rows=69999 width=10) (actual time=195.956..226.818 rows=69999 loops=1)
+                    Hash Cond: (s.property_id = p.property_id)
+                    Buffers: shared hit=2599
+                    ->  Seq Scan on shortlists s  (cost=0.00..1078.99 rows=69999 width=8) (actual time=0.012..4.323 rows=69999 loops=1)
+                          Buffers: shared hit=379
+                    ->  Hash  (cost=3420.60..3420.60 rows=120060 width=6) (actual time=195.514..195.516 rows=120060 loops=1)
+                          Buckets: 131072  Batches: 1  Memory Usage: 5480kB
+                          Buffers: shared hit=2220
+                          ->  Seq Scan on properties p  (cost=0.00..3420.60 rows=120060 width=6) (actual time=162.859..175.987 rows=120060 loops=1)
+                                Buffers: shared hit=2220
+  SubPlan 2
+    ->  Seq Scan on enquiries e  (cost=0.00..1868.00 rows=100000 width=8) (actual time=14.049..26.119 rows=100000 loops=1)
+          Buffers: shared hit=868
+Planning:
+  Buffers: shared hit=313
+Planning Time: 0.630 ms
+JIT:
+  Functions: 29
+  Options: Inlining true, Optimization true, Expressions true, Deforming true
+  Timing: Generation 0.946 ms, Inlining 41.849 ms, Optimization 82.431 ms, Emission 61.763 ms, Total 186.988 ms
+Execution Time: 881.790 ms
+=== R25 run 3 ===
+GroupAggregate  (cost=4921.49..165869528.33 rows=10 width=18) (actual time=367.900..921.640 rows=10 loops=1)
+  Group Key: l.city_id
+  Buffers: shared hit=3469
+  ->  Nested Loop  (cost=4921.49..111371.24 rows=69999 width=10) (actual time=197.904..833.970 rows=69999 loops=1)
+        Join Filter: (l.locality_id = p.locality_id)
+        Rows Removed by Join Filter: 6929901
+        Buffers: shared hit=2601
+        ->  Index Scan using uq_localities_city_name on localities l  (cost=0.14..13.64 rows=100 width=4) (actual time=0.008..0.308 rows=100 loops=1)
+              Buffers: shared hit=2
+        ->  Materialize  (cost=4921.35..6534.09 rows=69999 width=10) (actual time=1.976..5.143 rows=69999 loops=100)
+              Buffers: shared hit=2599
+              ->  Hash Join  (cost=4921.35..6184.10 rows=69999 width=10) (actual time=197.602..231.683 rows=69999 loops=1)
+                    Hash Cond: (s.property_id = p.property_id)
+                    Buffers: shared hit=2599
+                    ->  Seq Scan on shortlists s  (cost=0.00..1078.99 rows=69999 width=8) (actual time=0.013..5.354 rows=69999 loops=1)
+                          Buffers: shared hit=379
+                    ->  Hash  (cost=3420.60..3420.60 rows=120060 width=6) (actual time=197.112..197.114 rows=120060 loops=1)
+                          Buckets: 131072  Batches: 1  Memory Usage: 5480kB
+                          Buffers: shared hit=2220
+                          ->  Seq Scan on properties p  (cost=0.00..3420.60 rows=120060 width=6) (actual time=161.184..175.669 rows=120060 loops=1)
+                                Buffers: shared hit=2220
+  SubPlan 2
+    ->  Seq Scan on enquiries e  (cost=0.00..1868.00 rows=100000 width=8) (actual time=16.700..26.743 rows=100000 loops=1)
+          Buffers: shared hit=868
+Planning:
+  Buffers: shared hit=313
+Planning Time: 0.696 ms
+JIT:
+  Functions: 29
+  Options: Inlining true, Optimization true, Expressions true, Deforming true
+  Timing: Generation 1.098 ms, Inlining 45.999 ms, Optimization 76.604 ms, Emission 65.414 ms, Total 189.114 ms
+Execution Time: 939.897 ms
